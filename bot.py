@@ -9,16 +9,14 @@ from aiogram.types import (
 bot = Bot(token=os.getenv("BOT_TOKEN"))
 dp = Dispatcher()
 
-ADMIN_ID = 8370155327
+ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))
 PAY_INFO = "79407315708 (СБП), получатель: Кирилл У."
 PRICE = 150
-TUTOR_TEXT = "Спасибо за покупку! Твой тутор - https://disk.yandex.ru/d/bbnygT5kKhcGxA"
+TUTOR_TEXT = os.getenv("TUTOR_TEXT", "Спасибо за покупку! Тутор скоро придёт.")
 LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "IMG_20261109_134317_956.jpg")
 
-HD_TEXT = (вот тутор как выкладывать с hd качеством https://disk.yandex.ru/d/bbnygT5kKhcGxA)
 main_kb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Купить тутор на качество", callback_data="buy")],
-    [InlineKeyboardButton(text="Как выкладывать в Full HD", callback_data="hd")],
     [InlineKeyboardButton(text="Профиль", callback_data="profile")],
 ])
 
@@ -31,11 +29,6 @@ async def start(message: Message):
         await message.answer_photo(FSInputFile(LOGO), caption=text, reply_markup=main_kb)
     except Exception:
         await message.answer(text, reply_markup=main_kb)
-
-@dp.callback_query(F.data == "hd")
-async def hd(call: CallbackQuery):
-    await call.message.answer(HD_TEXT)
-    await call.answer()
 
 @dp.callback_query(F.data == "profile")
 async def profile(call: CallbackQuery):
