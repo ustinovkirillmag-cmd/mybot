@@ -15,15 +15,7 @@ PRICE = 150
 TUTOR_TEXT = "Спасибо за покупку! Твой тутор - https://disk.yandex.ru/d/bbnygT5kKhcGxA"
 LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "IMG_20261109_134317_956.jpg")
 
-HD_TEXT = (
-    "Как выкладывать в Full HD:\n\n"
-    "1. Экспортируй видео в 1080x1920, 30 или 60 кадров в секунду.\n"
-    "2. Ставь высокий битрейт при экспорте (чем выше, тем чище картинка).\n"
-    "3. В настройках приложения включи загрузку в высоком качестве (HD).\n"
-    "4. Загружай по Wi-Fi и отключи экономию трафика.\n"
-    "5. Не пережимай видео несколько раз: сохраняй из редактора один раз."
-)
-
+HD_TEXT = (вот тутор как выкладывать с hd качеством https://disk.yandex.ru/d/bbnygT5kKhcGxA)
 main_kb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Купить тутор на качество", callback_data="buy")],
     [InlineKeyboardButton(text="Как выкладывать в Full HD", callback_data="hd")],
