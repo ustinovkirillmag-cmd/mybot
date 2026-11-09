@@ -14,7 +14,9 @@ keyboard = ReplyKeyboardMarkup(
 
 @dp.message(CommandStart())
 async def start(message: Message):
-    await message.answer("Привет, Малвикс!", reply_markup=keyboard)
+    user = message.from_user
+    name = f"@{user.username}" if user.username else user.first_name
+    await message.answer(f"Привет, {name}!", reply_markup=keyboard)
 
 @dp.message(F.text == "Купить тутор на качество")
 async def buy(message: Message):
